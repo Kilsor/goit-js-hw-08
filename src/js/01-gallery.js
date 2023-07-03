@@ -1,6 +1,7 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Change code below this line
 
 const list = document.querySelector('.gallery');
@@ -28,6 +29,7 @@ function createMarkupItems(arr) {
 }
 
 // Ініціалізація SimpleLightbox
+
 new SimpleLightbox('.gallery a', {
   captions: true, // Включення підписів до зображень
   captionsData: 'alt', // Використання значення атрибуту "alt" для підпису
