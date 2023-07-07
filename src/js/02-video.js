@@ -1,6 +1,8 @@
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
+const CURRENT_TIME_KEY = 'videoplayer-current-time';
+
 //Ініціалізація плеєра у файлі скрипта:
 const iframe = document.querySelector('#vimeo-player');
 const player = new Player(iframe);
@@ -10,13 +12,13 @@ player.on(
   'timeupdate',
   throttle(function (event) {
     const currentTime = event.seconds;
-    localStorage.setItem('videoplayer-current-time', currentTime);
+    localStorage.setItem(CURRENT_TIME_KEY, currentTime);
   }, 1000)
 );
 
 //Під час перезавантаження сторінки використовуйте метод setCurrentTime() для відновлення відтворення зі збереженої позиції:
 window.addEventListener('load', function () {
-  const currentTime = localStorage.getItem('videoplayer-current-time');
+  const currentTime = localStorage.getItem(CURRENT_TIME_KEY);
   if (currentTime) {
     player.setCurrentTime(parseFloat(currentTime));
   }
